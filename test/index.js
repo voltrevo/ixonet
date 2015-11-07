@@ -36,4 +36,26 @@ describe('ixonet', function() {
     assert.equal(a.value.curr, ixonet.decay);
     assert.equal(b.value.curr, ixonet.decay * ixonet.decay);
   });
+
+  it('should have state that allows accumulation', () => {
+    let ixonet = Ixonet();
+
+    let head = ixonet.head;
+    let a = ixonet.Ixon();
+    ixonet.connect(head, head, a);
+    ixonet.connect(a, head, a);
+
+    assert.equal(a.value.curr, 0);
+
+    let k = ixonet.decay;
+
+    ixonet.step();
+    assert.equal(a.value.curr, k);
+
+    ixonet.step();
+    assert.equal(a.value.curr, k + k * k);
+
+    ixonet.step();
+    assert.equal(a.value.curr, k + k * k + k * k * k);
+  });
 });
