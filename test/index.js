@@ -1,8 +1,10 @@
 import assert from 'assert';
-// import ixonet from '../lib';
+import Ixonet from '../lib';
 
 describe('ixonet', function() {
-  it('should have unit test!', function() {
-    assert(false, 'we expected this package author to add actual unit tests.');
+  it('should have a head with value 1', function() {
+    let ixonet = Ixonet();
+
+    assert.equal(ixonet.head.value.curr, 1);
   });
 });
