@@ -7,4 +7,12 @@ describe('ixonet', function() {
 
     assert.equal(ixonet.head.value.curr, 1);
   });
+
+  it('should still have head with value 1 after a step', function() {
+    let ixonet = Ixonet();
+
+    ixonet.step();
+
+    assert.equal(ixonet.head.value.curr, 1);
+  });
 });
